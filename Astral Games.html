@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astral Games</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入Font Awesome图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- 自定义Tailwind配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366F1', // 主色调：紫蓝色（游戏风格）
+                        secondary: '#1E293B', // 次要色调：深灰蓝
+                        accent: '#F43F5E',    // 强调色：玫红
+                        dark: '#0F172A',      // 深色背景
+                    },
+                    fontFamily: {
+                        gaming: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            }
+            .card-hover {
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+            }
+        }
+    </style>
+</head>
+
+<body class="font-gaming bg-dark text-white antialiased">
+    <!-- 导航栏 -->
+    <header class="fixed w-full top-0 z-50 bg-secondary/90 backdrop-blur-sm">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2">
+                <i class="fa-solid fa-gamepad text-2xl text-primary"></i>
+                <span class="text-xl font-bold">Astral Games</span>
+            </a>
+            
+            <!-- 桌面端导航 -->
+            <ul class="hidden md:flex gap-8">
+                <li><a href="#about" class="hover:text-primary transition-colors">About us</a></li>
+                <li><a href="#games" class="hover:text-primary transition-colors">Games under the brand</a></li>
+                <li><a href="#contact" class="hover:text-primary transition-colors">Contact us</a></li>
+            </ul>
+            
+            <!-- 移动端菜单按钮 -->
+            <button id="menuBtn" class="md:hidden text-2xl">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </nav>
+        
+        <!-- 移动端导航菜单 -->
+        <div id="mobileMenu" class="md:hidden hidden bg-secondary/95 backdrop-blur-sm">
+            <ul class="container mx-auto px-4 py-4 flex flex-col gap-4">
+                <li><a href="#about" class="block py-2 hover:text-primary transition-colors">About us</a></li>
+                <li><a href="#games" class="block py-2 hover:text-primary transition-colors">Games under the brand</a></li>
+                <li><a href="#contact" class="block py-2 hover:text-primary transition-colors">Contact us</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- 英雄区 -->
+    <section class="pt-28 pb-20 px-4 bg-gradient-to-b from-primary/20 to-dark">
+        <div class="container mx-auto max-w-5xl text-center">
+            <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold mb-6 text-shadow">
+                Astral Games
+            </h1>
+            <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                Born from passion, perfected through craftsmanship. We are committed to creating high-quality gaming experiences that immerse players.
+            </p>
+            <a href="#games" class="inline-block bg-primary hover:bg-primary/90 text-white font-medium py-3 px-8 rounded-lg transition-colors">
+                Explore our games <i class="fa-solid fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- 关于我们 -->
+   <section id="about" class="py-16 px-6">
+    <div class="container mx-auto max-w-4xl">
+        <h2 class="text-2xl font-bold text-center mb-8">About Astral Games</h2>
+        
+        <div class="flex flex-col md:flex-row gap-10 items-center">
+            <!-- 左侧文本区 -->
+            <div class="md:w-1/2">
+                <h3 class="text-xl font-semibold text-yellow-500 mb-4">Our Story</h3>
+                <p class="text-gray-300 mb-6 text-sm">
+                    Astral Games was founded in 2022 by a group of experienced developers who love games. We firmly believe that good games are not just entertainment, but also a means of conveying emotions and creating experiences.
+                </p>
+                
+                <!-- 统计数据（匹配参考图） -->
+                <div class="flex gap-8 mb-8">
+                    <div class="text-center">
+                        <span class="block text-2xl font-bold text-yellow-500">6</span>
+                        <span class="text-gray-400 text-xs">Team member</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="block text-2xl font-bold text-yellow-500">2</span>
+                        <span class="text-gray-400 text-xs">Our game</span>
+                    </div>
+                </div>
+                
+                <!-- 金色渐变按钮（核心复刻） -->
+                <a href="https://www.roblox.com/communities/33872757/AstralCXG-Games" target="_blank" class="inline-block px-6 py-2 rounded-md bg-gradient-to-r from-yellow-600 to-yellow-400 text-slate-900 font-semibold text-sm shadow-lg shadow-yellow-500/50 hover:scale-105 transition-transform">
+                    Open in Roblox <i class="fa-solid fa-arrow-right ml-1"></i>
+                </a>
+            </div>
+            
+            <!-- 右侧Roblox图标区（匹配参考图） -->
+          <div class="md:w-1/2">
+    <!-- 取消边框 + 图片放大 + 圆角处理 -->
+    <div class="w-full max-w-md mx-auto"> <!-- 放大图片容器，无渐变边框 -->
+        <img src="images/studio.jpg" alt="Roblox Logo" class="w-full h-auto rounded-xl"> <!-- rounded-xl 添加圆角 -->
+    </div>
+</div>
+        </div>
+    </div>
+</section>
+
+    <!-- 旗下游戏 -->
+    <section id="games" class="py-20 px-4 bg-secondary/50">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="text-3xl font-bold mb-12 text-center">Games under the brand</h2>
+            
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 游戏卡片1 -->
+				<a href="https://www.roblox.com/games/120216274923427/A-GAME" target="_blank" class="block">
+					<div class="bg-secondary rounded-xl overflow-hidden card-hover">
+					    <img src="images/VOR.jpg" alt="Vice Outlaw Rush" class="w-full h-48 object-cover">
+							<div class="p-6">
+								<h3 class="text-xl font-semibold mb-2">Vice Outlaw Rush</h3>
+								<p class="text-gray-300 mb-4">Open-world freedom: Build your crime empire</p>
+								<div class="flex justify-between items-center">
+									<span class="text-primary"><i class="fa-solid fa-star mr-1"></i> 4.8</span>
+									<span class="text-gray-400">PC / Mobile</span>
+								</div>
+							</div>
+					</div>
+				</a>
+				<!-- 游戏卡片2 -->
+				<a href="https://www.roblox.com/games/75368048047984/unnamed" target="_blank" class="block">
+					<div class="bg-secondary rounded-xl overflow-hidden card-hover">
+					    <img src="images/jgsyc.jpg" alt="jgsyc" class="w-full h-48 object-cover">
+							<div class="p-6">
+								<h3 class="text-xl font-semibold mb-2">井冈山营区</h3>
+								<p class="text-gray-300 mb-4">Real Chinese Military Role-Playing</p>
+								<div class="flex justify-between items-center">
+									<span class="text-primary"><i class="fa-solid fa-star mr-1"></i> 4.8</span>
+									<span class="text-gray-400">PC / Mobile</span>
+								</div>
+							</div>
+					</div>
+				</a>
+				
+
+              
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section id="contact" class="py-20 px-4">
+        <div class="container mx-auto max-w-5xl">
+            <h2 class="text-3xl font-bold mb-12 text-center">Contact us</h2>
+            
+            <div class="grid md:grid-cols-2 gap-10">
+                <!-- 联系信息 -->
+                <div class="bg-secondary/70 p-8 rounded-xl">
+                    <h3 class="text-2xl font-semibold mb-6">Contact information</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <i class="fa-solid fa-map-marker-alt text-xl text-accent mt-1"></i>
+                            <div>
+                                <h4 class="font-medium mb-1">Studio address</h4>
+                                <p class="text-gray-300">---</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <i class="fa-solid fa-envelope text-xl text-accent mt-1"></i>
+                            <div>
+                                <h4 class="font-medium mb-1">Business Email</h4>
+                                <p class="text-gray-300">AstralGames@yeag.net</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <i class="fa-solid fa-phone text-xl text-accent mt-1"></i>
+                            <div>
+                                <h4 class="font-medium mb-1">Contact number</h4>
+                                <p class="text-gray-300">---</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <i class="fa-solid fa-clock text-xl text-accent mt-1"></i>
+                            <div>
+                                <h4 class="font-medium mb-1">Working hours</h4>
+                                <p class="text-gray-300">Monday to Friday 20:00 - 23:00（Excluding statutory holidays）</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                   <div class="mt-8">
+						<h4 class="font-medium mb-4">Social media</h4>
+						<div class="flex gap-4">
+							<!-- TikTok 图标 -->
+							<a href="https://www.tiktok.com/@astralcxg?_r=1&_d=ecef8glc620400&sec_uid=MS4wLjABAAAABs58r0TQ9_xNQVkz-SI9LjXiRz0SCFPQa0PoxAGpuwiZ0rXTsMN9VsFPB45rJCBQ&share_author_id=7535230640380347414&sharer_language=zh&source=h5_m&u_code=elj9l5600mda3f&ug_btm=b8727,b0&social_share_type=4&utm_source=copy&sec_user_id=MS4wLjABAAAABs58r0TQ9_xNQVkz-SI9LjXiRz0SCFPQa0PoxAGpuwiZ0rXTsMN9VsFPB45rJCBQ&tt_from=copy&utm_medium=ios&utm_campaign=client_share&enable_checksum=1&user_id=7535230640380347414&share_link_id=257072CF-7C6B-4CFC-AA99-4FEAE0D10777&share_app_id=1233" target="_blank" class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary transition-colors">
+								<i class="fa-brands fa-tiktok"></i>
+							</a>
+							<!-- Discord 图标 -->
+							<a href="https://discord.gg/mxY2vkj7TA" target="_blank" class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary transition-colors">
+								<i class="fa-brands fa-discord"></i>
+							</a>
+							<!-- X (原Twitter) 图标 -->
+							<a href="https://x.com/cxg1033615?s=21" target="_blank" class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary transition-colors">
+								<i class="fa-brands fa-x-twitter"></i>
+							</a>
+							<!-- 哔哩哔哩 图标 -->
+							<a href="https://space.bilibili.com/3493280304073586" target="_blank" class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary transition-colors">
+								<i class="fa-brands fa-bilibili"></i>
+							</a>
+							<!-- Roblox 图标按钮 -->
+<a href="https://www.roblox.com/communities/33872757/AstralCXG-Games" target="_blank" class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary transition-colors">
+    <i class="fa-brands fa-roblox"></i>
+</a>
+						</div>
+					</div>
+                </div>
+                
+                <!-- 联系表单 -->
+                <div class="bg-secondary/70 p-8 rounded-xl">
+                    <h3 class="text-2xl font-semibold mb-6">Send Message</h3>
+                    
+                    <form id="contactForm">
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-300 mb-2">your name</label>
+                            <input type="text" id="name" class="w-full bg-dark/50 border border-gray-600 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-primary" placeholder="Please enter your name" required>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-300 mb-2">Email</label>
+                            <input type="email" id="email" class="w-full bg-dark/50 border border-gray-600 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-primary" placeholder="Please enter your email" required>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="subject" class="block text-gray-300 mb-2">Theme</label>
+                            <select id="subject" class="w-full bg-dark/50 border border-gray-600 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-primary">
+                                <option value="">Please select a contact subject</option>
+                                <option value="business">Business Cooperation</option>
+                                <option value="join">Join us</option>
+                                <option value="feedback">Game Feedback</option>
+                                <option value="other">Other issues</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-300 mb-2">Message content</label>
+                            <textarea id="message" rows="5" class="w-full bg-dark/50 border border-gray-600 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-primary" placeholder="Please enter what you would like to tell us..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-6 rounded-lg transition-colors">
+                            Cannot be used <i class="fa-solid fa-paper-plane ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-secondary py-10 px-4">
+        <div class="container mx-auto max-w-6xl">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <a href="#" class="flex items-center gap-2 mb-6 md:mb-0">
+                    <i class="fa-solid fa-gamepad text-2xl text-primary"></i>
+                    <span class="text-xl font-bold">Astral Games</span>
+                </a>
+                
+                <div class="flex gap-6">
+                    <a href="#about" class="hover:text-primary transition-colors">About Us</a>
+                    <a href="#games" class="hover:text-primary transition-colors">Games under the brand</a>
+                    <a href="#contact" class="hover:text-primary transition-colors">Contact us</a>
+                    <a href="#" class="hover:text-primary transition-colors">Privacy Policy</a>
+                </div>
+            </div>
+            
+            <hr class="border-gray-700 mb-8">
+            
+            <div class="text-center text-gray-500">
+                <p>© 2025 Astral Games All rights reserved</p>
+                <p class="mt-2"></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 移动端菜单切换
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            // 切换菜单图标
+            const icon = menuBtn.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.replace('fa-bars', 'fa-times');
+            } else {
+                icon.classList.replace('fa-times', 'fa-bars');
+            }
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                // 关闭移动端菜单
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    menuBtn.querySelector('i').classList.replace('fa-times', 'fa-bars');
+                }
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80, // 偏移导航栏高度
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // 表单提交处理
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // 简单的表单验证和提示
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            if (name && email && message) {
+                alert('Temporarily unavailable. Please report using Discord.');
+                contactForm.reset();
+            } else {
+                alert('Please fill out the complete form information.！');
+            }
+        });
+        
+        // 滚动时导航栏样式变化
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('py-2');
+                header.classList.remove('py-4');
+            } else {
+                header.classList.add('py-4');
+                header.classList.remove('py-2');
+            }
+        });
+    </script>
+</body>
+</html>
